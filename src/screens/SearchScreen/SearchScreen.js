@@ -11,6 +11,7 @@ import {
 import SEARCH_API from '../../api/SEARCH_API';
 import Card from '../../components/Card/Card';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import styles from './styles';
 
 const SearchScreen = () => {
   const [input, setInput] = useState('');
@@ -59,15 +60,3 @@ const SearchScreen = () => {
 };
 
 export default SearchScreen;
-
-const styles = StyleSheet.create({
-  input: {
-    padding: 10,
-    height: 50,
-    width: 200,
-    borderWidth: 1,
-    alignSelf: 'center',
-    marginTop: 10,
-    borderRadius: 10,
-  },
-});

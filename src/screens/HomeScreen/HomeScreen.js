@@ -19,15 +19,17 @@ const HomeScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [mechanicsArray, setMechanicsArray] = useState([]);
 
-  navigation.setOptions({
-    headerRight: () => (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('SearchScreen')}
-        style={{marginRight: 10}}>
-        <Text style={{fontWeight: 'bold', color: 'red'}}>Search</Text>
-      </TouchableOpacity>
-    ),
-  });
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('SearchScreen')}
+          style={{marginRight: 10}}>
+          <Text style={{fontWeight: 'bold', color: 'red'}}>Search</Text>
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
 
   const fetchData = async () => {
     setLoading(true);
