@@ -3,7 +3,6 @@ const {width, height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
-    marginVertical: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 5,
@@ -14,9 +13,12 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 20,
     elevation: 5,
+    minHeight: height * 0.5,
+    width: 300,
   },
   face: {
-    backgroundColor: 'rgb(158,207,230)',
+    minHeight: height * 0.5,
+    width: 300,
   },
   hidden: {backfaceVisibility: 'hidden'},
   back: {
@@ -27,6 +29,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     position: 'absolute',
     top: 0,
+    minHeight: height * 0.5,
+    width: 300,
   },
   image: {
     width: 300,

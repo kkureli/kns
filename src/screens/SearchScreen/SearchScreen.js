@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import SEARCH_API from '../../api/SEARCH_API';
 import Card from '../../components/Card/Card';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 const SearchScreen = () => {
   const [input, setInput] = useState('');
@@ -40,11 +41,7 @@ const SearchScreen = () => {
 
   return (
     <>
-      {fetching ? (
-        <View style={styles.loading}>
-          <ActivityIndicator size="large" color="red" />
-        </View>
-      ) : null}
+      {fetching ? <LoadingSpinner /> : null}
       <TextInput
         placeholder="Search"
         style={styles.input}
@@ -52,6 +49,7 @@ const SearchScreen = () => {
         onChangeText={setInput}
       />
       <FlatList
+        contentContainerStyle={{marginTop: 10}}
         keyExtractor={(item, index) => index.toString()}
         data={cards}
         renderItem={({item, index, separators}) => renderItem(item)}
@@ -71,12 +69,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
     borderRadius: 10,
-  },
-  loading: {
-    position: 'absolute',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
   },
 });

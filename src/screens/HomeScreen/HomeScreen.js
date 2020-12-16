@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import API from '../../api/API';
 import ListItem from '../../components/ListItem/ListItem';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import DataContext from '../../context/DataContext';
 import styles from './styles';
 const HomeScreen = ({navigation}) => {
@@ -65,11 +66,7 @@ const HomeScreen = ({navigation}) => {
   };
 
   if (loading) {
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator size="large" color="red" />
-      </View>
-    );
+    return <LoadingSpinner />;
   } else {
     return (
       <SafeAreaView>

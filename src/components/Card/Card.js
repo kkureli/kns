@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Animated,
+  ActivityIndicator,
 } from 'react-native';
 import CardBack from '../CardBack/CardBackText';
 import styles from './styles';
@@ -50,24 +51,32 @@ const Card = ({item}) => {
     ],
   };
 
+  const [cardBackHeight, setCardBackHeight] = useState(0);
+
   return (
-    <>
-      <Animated.View style={[styles.hidden, rotateFront, styles.card]}>
+    <View style={[styles.card, {marginBottom: cardBackHeight / 4}]}>
+      <Animated.View style={[styles.hidden, rotateFront, styles.face]}>
         <TouchableOpacity onPress={doAFlip}>
           <Image
             resizeMode="contain"
-            style={styles.image}
+            style={[styles.image]}
             source={{uri: item.img}}
           />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View
-        style={[styles.hidden, styles.back, rotateBack, styles.card]}>
-        <TouchableOpacity onPress={doAFlip}>
+        onLayout={(event) => {
+          var {x, y, width, height} = event.nativeEvent.layout;
+          setCardBackHeight(height);
+        }}
+        style={[styles.hidden, styles.back, rotateBack]}>
+        <TouchableOpacity
+          style={{height: '100%', width: '100%'}}
+          onPress={doAFlip}>
           <CardBack item={{...item}} />
         </TouchableOpacity>
       </Animated.View>
-    </>
+    </View>
   );
 };
 
