@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import CardBack from '../CardBack/CardBackText';
 import styles from './styles';
+import PropTypes from 'prop-types';
 
 const Card = ({item}) => {
   const animate = useRef(new Animated.Value(0));
@@ -78,6 +79,10 @@ const Card = ({item}) => {
       </Animated.View>
     </View>
   );
+};
+
+Card.propTypes = {
+  item: PropTypes.object.isRequired,
 };
 
 export default Card;

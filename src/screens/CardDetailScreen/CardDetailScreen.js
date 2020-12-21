@@ -9,6 +9,7 @@ import {
 import Card from '../../components/Card/Card';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import DataContext from '../../context/DataContext';
+import PropTypes from 'prop-types';
 
 const CardDetailScreen = ({navigation, route}) => {
   const {data} = useContext(DataContext);
@@ -57,6 +58,17 @@ const CardDetailScreen = ({navigation, route}) => {
       />
     </>
   );
+};
+
+CardDetailScreen.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      mechanic: PropTypes.string.isRequired,
+    }),
+  }),
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default CardDetailScreen;

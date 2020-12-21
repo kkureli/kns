@@ -13,7 +13,8 @@ import API from '../../api/API';
 import ListItem from '../../components/ListItem/ListItem';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import DataContext from '../../context/DataContext';
-import styles from './styles';
+import PropTypes from 'prop-types';
+
 const HomeScreen = ({navigation}) => {
   const {data, setData} = useContext(DataContext);
   const [loading, setLoading] = useState(false);
@@ -80,6 +81,12 @@ const HomeScreen = ({navigation}) => {
       </SafeAreaView>
     );
   }
+};
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default HomeScreen;

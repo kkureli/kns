@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-
-const CardBack = ({children, item}) => {
+import PropTypes from 'prop-types';
+const CardBack = ({item}) => {
   return Object.keys(item).map(function (key, index) {
     if (key === 'mechanics') {
       return (
@@ -24,6 +24,10 @@ const CardBack = ({children, item}) => {
       return <Text key={index.toString()}>{key + ': ' + item[key]}</Text>;
     }
   });
+};
+
+CardBack.propTypes = {
+  item: PropTypes.object.isRequired,
 };
 
 export default CardBack;
