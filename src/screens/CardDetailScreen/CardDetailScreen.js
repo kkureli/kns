@@ -1,11 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  InteractionManager,
-} from 'react-native';
+import {FlatList, StyleSheet, InteractionManager} from 'react-native';
 import Card from '../../components/Card/Card';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import DataContext from '../../context/DataContext';

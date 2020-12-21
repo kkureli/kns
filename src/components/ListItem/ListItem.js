@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
 const ListItem = ({item, navigation}) => {

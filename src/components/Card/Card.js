@@ -1,13 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Animated,
-  ActivityIndicator,
-} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {Image, TouchableOpacity, View, Animated} from 'react-native';
 import CardBack from '../CardBack/CardBackText';
 import styles from './styles';
 import PropTypes from 'prop-types';

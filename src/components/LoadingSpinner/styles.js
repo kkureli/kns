@@ -1,6 +1,5 @@
-import React from 'react';
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
-const {width, height} = Dimensions.get('window');
+import {StyleSheet} from 'react-native';
+
 const styles = StyleSheet.create({
   loading: {
     justifyContent: 'center',

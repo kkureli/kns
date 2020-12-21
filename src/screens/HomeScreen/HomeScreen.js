@@ -1,14 +1,6 @@
 import Axios from 'axios';
 import React, {useContext, useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import API from '../../api/API';
 import ListItem from '../../components/ListItem/ListItem';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
@@ -16,7 +8,7 @@ import DataContext from '../../context/DataContext';
 import PropTypes from 'prop-types';
 
 const HomeScreen = ({navigation}) => {
-  const {data, setData} = useContext(DataContext);
+  const {setData} = useContext(DataContext);
   const [loading, setLoading] = useState(false);
   const [mechanicsArray, setMechanicsArray] = useState([]);
 

@@ -1,13 +1,6 @@
 import Axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  FlatList,
-} from 'react-native';
+import {TextInput, FlatList} from 'react-native';
 import SEARCH_API from '../../api/SEARCH_API';
 import Card from '../../components/Card/Card';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
