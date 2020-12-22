@@ -4,11 +4,12 @@ import {FlatList, SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import API from '../../api/API';
 import ListItem from '../../components/ListItem/ListItem';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import DataContext from '../../context/DataContext';
+
 import PropTypes from 'prop-types';
+import {DataContext} from '../../context/DataContext';
 
 const HomeScreen = ({navigation}) => {
-  const {setData} = useContext(DataContext);
+  const {dispatch} = useContext(DataContext);
   const [loading, setLoading] = useState(false);
   const [mechanicsArray, setMechanicsArray] = useState([]);
 
@@ -34,7 +35,7 @@ const HomeScreen = ({navigation}) => {
         },
       });
 
-      setData(data.data);
+      dispatch({type: 'UPDATE_DATA', payload: data.data});
       const mechanics = [];
       Object.keys(data.data).map((item) => {
         return data.data[item].map((e) => {

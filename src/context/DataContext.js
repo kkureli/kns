@@ -1,8 +1,21 @@
-import React from 'react';
+import React, {createContext, useReducer} from 'react';
+import {dataReducer} from './Reducer';
+import PropTypes from 'prop-types';
 
-const DataContext = React.createContext({
-  data: {},
-  setData: (data) => {},
-});
+export const DataContext = createContext();
 
-export default DataContext;
+const DataContextProvider = ({children}) => {
+  const [data, dispatch] = useReducer(dataReducer, {});
+
+  return (
+    <DataContext.Provider value={{data, dispatch}}>
+      {children}
+    </DataContext.Provider>
+  );
+};
+
+DataContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default DataContextProvider;
