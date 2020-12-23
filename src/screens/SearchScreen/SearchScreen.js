@@ -1,11 +1,10 @@
-import Axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {TextInput, FlatList} from 'react-native';
-import SEARCH_API from '../../api/SEARCH_API';
 import Card from '../../components/Card/Card';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './styles';
-
+import axios from '../../api/axios';
+import SEARCH_API_BASE_URL from '../../api/SEARCH_API_BASE_URL';
 const SearchScreen = () => {
   const [input, setInput] = useState('');
   const [fetching, setFetching] = useState(false);
@@ -14,12 +13,7 @@ const SearchScreen = () => {
   const searchCard = async (input) => {
     setFetching(true);
     try {
-      const data = await Axios.get(SEARCH_API.baseURL + input, {
-        headers: {
-          'x-rapidapi-key': SEARCH_API.xRapidApiKey,
-          'x-rapidapi-host': SEARCH_API.xRapidApiHost,
-        },
-      });
+      const data = await axios.get(SEARCH_API_BASE_URL + input);
       setFetching(false);
       setCards(data.data);
     } catch (err) {

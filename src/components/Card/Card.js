@@ -59,7 +59,7 @@ const Card = ({item}) => {
       </Animated.View>
       <Animated.View
         onLayout={(event) => {
-          var {x, y, width, height} = event.nativeEvent.layout;
+          var {height} = event.nativeEvent.layout;
           setCardBackHeight(height);
         }}
         style={[styles.hidden, styles.back, rotateBack]}>

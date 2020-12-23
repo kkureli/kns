@@ -1,12 +1,11 @@
-import Axios from 'axios';
 import React, {useContext, useEffect, useState} from 'react';
 import {FlatList, SafeAreaView, Text, TouchableOpacity} from 'react-native';
-import API from '../../api/API';
 import ListItem from '../../components/ListItem/ListItem';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-
 import PropTypes from 'prop-types';
 import {DataContext} from '../../context/DataContext';
+import API_BASE_URL from '../../api/API_BASE_URL';
+import axios from '../../api/axios';
 
 const HomeScreen = ({navigation}) => {
   const {dispatch} = useContext(DataContext);
@@ -28,13 +27,7 @@ const HomeScreen = ({navigation}) => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const data = await Axios.get(API.baseURL, {
-        headers: {
-          'x-rapidapi-key': API.xRapidApiKey,
-          'x-rapidapi-host': API.xRapidApiHost,
-        },
-      });
-
+      const data = await axios.get(API_BASE_URL);
       dispatch({type: 'UPDATE_DATA', payload: data.data});
       const mechanics = [];
       Object.keys(data.data).map((item) => {
@@ -47,6 +40,7 @@ const HomeScreen = ({navigation}) => {
       setMechanicsArray(mechanics);
       setLoading(false);
     } catch (err) {
+      console.log(err);
       setLoading(false);
     }
   };
